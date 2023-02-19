@@ -10,9 +10,6 @@ param webAppName string
 @description('This is the Web App Software version')
 param webAppLinuxFxVersion string
 
-@description('This is the Web App Network Access')
-param webAppPublicNetworkAccess string = 'Disabled'
-
 resource webAppServer 'Microsoft.Web/serverfarms@2022-03-01' existing = {
   name: webAppServerName
 }
@@ -22,7 +19,6 @@ resource webApp 'Microsoft.Web/sites@2022-03-01' = {
   location: location
   properties: {
     serverFarmId: webAppServer.id
-    publicNetworkAccess: webAppPublicNetworkAccess
     clientAffinityEnabled: false
     httpsOnly: true
     siteConfig: {

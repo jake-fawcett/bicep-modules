@@ -10,11 +10,15 @@ param storageAccountSku string = 'Standard_LRS'
 @description('This is the Storage Account tier')
 param storageAccountTier string = 'Hot'
 
+@description('This is the Storage Account tier')
+param storageAccountPublicAccess string = 'Disabled'
+
 resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   name: storageAccountName
   location: location
   properties: {
     accessTier: storageAccountTier
+    publicNetworkAccess: storageAccountPublicAccess
     supportsHttpsTrafficOnly: true
     minimumTlsVersion: 'TLS1_2'
     networkAcls: {
