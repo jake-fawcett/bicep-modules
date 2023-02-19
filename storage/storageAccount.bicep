@@ -13,6 +13,9 @@ param storageAccountTier string = 'Hot'
 @description('This is the Storage Account tier')
 param storageAccountPublicAccess string = 'Disabled'
 
+@description('This is the Storage Account tier')
+param storageAccountDefaultNetworkAcl string = 'Deny'
+
 resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   name: storageAccountName
   location: location
@@ -23,7 +26,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
     minimumTlsVersion: 'TLS1_2'
     networkAcls: {
       bypass: 'Logging, Metrics, AzureServices'
-      defaultAction: 'Deny'
+      defaultAction: storageAccountDefaultNetworkAcl
     }
   }
   sku: {
