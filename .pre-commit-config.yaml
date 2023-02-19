@@ -1,0 +1,19 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: check-added-large-files
+    args: [--maxkb=2500]
+  - id: check-ast
+  - id: check-case-conflict
+  - id: check-docstring-first
+  - id: check-merge-conflict
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: no-commit-to-branch
+    args: [--branch, main]
+- repo: https://github.com/Jake-Fawcett/azure-pre-commit-hooks
+  rev: 9783767b047840320732cec470ca5ada66aa7d6c
+  hooks:
+    - id: azure-bicep-build
+      verbose: true
